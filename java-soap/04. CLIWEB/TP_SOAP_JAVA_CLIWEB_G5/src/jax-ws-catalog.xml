@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://127.0.0.1:8080/TP_SOAP_JAVA_SERVICIO_G5/WSFederacion?wsdl" uri="wsdl/localhost_8080/TP_SOAP_JAVA_SERVICIO_G5/WSFederacion.wsdl"/>
+    <system systemId="http://127.0.0.1:8080/TP_SOAP_JAVA_SERVICIO_G5/WSFederacion?xsd=1" uri="wsdl/localhost_8080/TP_SOAP_JAVA_SERVICIO_G5/WSFederacion.xsd_1.xsd"/>
+</catalog>

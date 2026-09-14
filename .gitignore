@@ -1,0 +1,54 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Gradle / Android
+.gradle/
+.kotlin/
+**/build/
+local.properties
+*.apk
+*.aab
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.pubxml
+*.pubxml.user
+*.pdb
+*.dll
+*.exe
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+nbproject/private/
+
+# Operating system
+.DS_Store
+Thumbs.db
+*.log
+gradle_error*.txt
+
+# Secrets and local configuration
+.env
+.env.*
+!/.env.example
+**/appsettings.*.local.json
+
+# Archives and generated packages
+*.zip
+*.rar
+*.7z
+*.nupkg

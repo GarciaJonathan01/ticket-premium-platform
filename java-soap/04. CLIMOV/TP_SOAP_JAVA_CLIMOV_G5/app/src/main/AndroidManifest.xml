@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.TicketPremium">
+        <activity
+            android:name="ec.edu.monster.vista.LoginActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.TicketPremium">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="ec.edu.monster.vista.PartidosActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TicketPremium.Light" />
+        <activity
+            android:name="ec.edu.monster.vista.LocalidadesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TicketPremium.Light" />
+        <activity
+            android:name="ec.edu.monster.vista.CompraActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TicketPremium.Light" />
+        <activity
+            android:name="ec.edu.monster.vista.ReporteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TicketPremium.Light" />
+        <activity
+            android:name="ec.edu.monster.vista.MapaAsientosActivity"
+            android:exported="false"
+            android:theme="@style/Theme.TicketPremium.Light" />
+    </application>
+
+</manifest>

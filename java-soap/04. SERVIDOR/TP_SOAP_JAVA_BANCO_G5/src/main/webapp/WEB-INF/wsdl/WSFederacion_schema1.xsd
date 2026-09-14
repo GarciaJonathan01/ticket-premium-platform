@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://ws.monster.edu.ec/" xmlns:tns="http://ws.monster.edu.ec/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="comprarBoleto" type="tns:comprarBoleto"/>
+
+  <xs:element name="comprarBoletoResponse" type="tns:comprarBoletoResponse"/>
+
+  <xs:element name="comprarBoletos" type="tns:comprarBoletos"/>
+
+  <xs:element name="comprarBoletosResponse" type="tns:comprarBoletosResponse"/>
+
+  <xs:element name="decrementarDisponibilidad" type="tns:decrementarDisponibilidad"/>
+
+  <xs:element name="decrementarDisponibilidadResponse" type="tns:decrementarDisponibilidadResponse"/>
+
+  <xs:element name="login" type="tns:login"/>
+
+  <xs:element name="loginResponse" type="tns:loginResponse"/>
+
+  <xs:element name="obtenerDetalleVentas" type="tns:obtenerDetalleVentas"/>
+
+  <xs:element name="obtenerDetalleVentasResponse" type="tns:obtenerDetalleVentasResponse"/>
+
+  <xs:element name="obtenerLocalidades" type="tns:obtenerLocalidades"/>
+
+  <xs:element name="obtenerLocalidadesResponse" type="tns:obtenerLocalidadesResponse"/>
+
+  <xs:element name="obtenerPartido" type="tns:obtenerPartido"/>
+
+  <xs:element name="obtenerPartidoResponse" type="tns:obtenerPartidoResponse"/>
+
+  <xs:element name="obtenerPartidosDisponibles" type="tns:obtenerPartidosDisponibles"/>
+
+  <xs:element name="obtenerPartidosDisponiblesResponse" type="tns:obtenerPartidosDisponiblesResponse"/>
+
+  <xs:element name="obtenerResumenVentas" type="tns:obtenerResumenVentas"/>
+
+  <xs:element name="obtenerResumenVentasResponse" type="tns:obtenerResumenVentasResponse"/>
+
+  <xs:complexType name="obtenerDetalleVentas">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerDetalleVentasResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:detalleVentaReporte" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleVentaReporte">
+    <xs:sequence>
+      <xs:element name="boletosTotales" type="xs:int"/>
+      <xs:element name="cliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecha" type="xs:string" minOccurs="0"/>
+      <xs:element name="localidades" type="xs:string" minOccurs="0"/>
+      <xs:element name="partido" type="xs:string" minOccurs="0"/>
+      <xs:element name="totalVenta" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprarBoleto">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+      <xs:element name="nombreCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoLocalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="idLocalidad" type="xs:int"/>
+      <xs:element name="cantidad" type="xs:int"/>
+      <xs:element name="precioUnitario" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprarBoletoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:factura" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="factura">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+      <xs:element name="detalles" type="tns:detalleFactura" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="fecha" type="xs:string" minOccurs="0"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="iva" type="xs:double"/>
+      <xs:element name="nombreCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="subtotal" type="xs:double"/>
+      <xs:element name="total" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detalleFactura">
+    <xs:sequence>
+      <xs:element name="cantidad" type="xs:int"/>
+      <xs:element name="codigoLocalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoPartido" type="xs:int"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="idFactura" type="xs:int"/>
+      <xs:element name="precioUnitario" type="xs:double"/>
+      <xs:element name="subtotal" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerLocalidades">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerLocalidadesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:localidadPartido" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="localidadPartido">
+    <xs:sequence>
+      <xs:element name="codigoLocalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="codigoPartido" type="xs:int"/>
+      <xs:element name="disponibilidad" type="xs:int"/>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="precio" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerResumenVentas">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerResumenVentasResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:resumenVenta" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resumenVenta">
+    <xs:sequence>
+      <xs:element name="codigoLocalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="totalRecaudado" type="xs:double"/>
+      <xs:element name="vendidos" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="decrementarDisponibilidad">
+    <xs:sequence>
+      <xs:element name="idLocalidad" type="xs:int"/>
+      <xs:element name="cantidad" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="decrementarDisponibilidadResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="login">
+    <xs:sequence>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="loginResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:usuario" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="password" type="xs:string" minOccurs="0"/>
+      <xs:element name="username" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerPartido">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerPartidoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:partidoFutbol" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="partidoFutbol">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:int"/>
+      <xs:element name="equipoLocal" type="xs:string" minOccurs="0"/>
+      <xs:element name="equipoVisita" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecha" type="xs:string" minOccurs="0"/>
+      <xs:element name="lugar" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprarBoletos">
+    <xs:sequence>
+      <xs:element name="codigoPartido" type="xs:int"/>
+      <xs:element name="nombreCliente" type="xs:string" minOccurs="0"/>
+      <xs:element name="peticiones" type="tns:peticionCompra" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="peticionCompra">
+    <xs:sequence>
+      <xs:element name="cantidad" type="xs:int"/>
+      <xs:element name="codigoLocalidad" type="xs:string" minOccurs="0"/>
+      <xs:element name="idLocalidad" type="xs:int"/>
+      <xs:element name="precioUnitario" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="comprarBoletosResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:factura" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerPartidosDisponibles">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="obtenerPartidosDisponiblesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:partidoFutbol" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
