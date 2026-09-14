@@ -1,56 +1,94 @@
 # TicketPremium Platform
 
-Academic platform for selling football match tickets, managing seating, and coordinating payment/credit operations.
+TicketPremium is an academic platform for football match ticket sales. It includes a Java SOAP version and a .NET REST version.
 
 ## Overview
 
-The project models matches, stadium locations, seats, purchases, invoices, users, sales reports, and a banking credit service. The Java SOAP delivery is complemented by a .NET RESTful implementation from the same TicketPremium domain.
+The system models matches, stadium areas, seats, purchases, invoices, users, and sales reports. It also connects ticket purchases with a banking credit service.
 
-## Architectures
+## Main Features
 
-- Java SOAP
-- .NET RESTful
+- User login
+- Match and stadium area browsing
+- Seat selection
+- Ticket purchase and invoice records
+- Sales reports
+- Credit simulation and banking service calls
+
+## Architecture
+
+The repository contains two separate implementations:
+
+- Java clients with SOAP federation and banking services
+- .NET clients with a REST API
+
+```mermaid
+flowchart LR
+    A[Console Client] --> E[Ticket Service]
+    B[Desktop Client] --> E
+    C[Web Client] --> E
+    D[Android Client] --> E
+    E --> F[(Ticket Database)]
+    E --> G[Banking Credit Service]
+```
 
 ## Applications
 
-- Java console client
-- Java Swing desktop client
-- Java web client
-- Android/Kotlin mobile client
-- Java SOAP federation and banking services
-- .NET REST server, console client, desktop client, and web client
+| Application | Technology | Purpose |
+| --- | --- | --- |
+| Java services | Java and SOAP | Provide ticket and banking operations |
+| Java clients | Console, Swing, JSP | Use the SOAP services |
+| Mobile client | Kotlin / Android | Provide mobile ticket access |
+| .NET REST server | C# and ASP.NET Web API | Provide REST operations |
+| .NET clients | Console, desktop, and web | Use the REST API |
 
-## Technologies
+## Tech Stack
 
-- Java, Maven, JAX-WS, Swing, JSP and Servlets
-- Kotlin, Android and Gradle
-- C#, ASP.NET Web API and Visual Studio
-- MySQL and SQL Server scripts
-- Python/PyMySQL database setup utility
+### Backend
+
+- Java, Maven, and JAX-WS
+- C# and ASP.NET Web API
+
+### Clients
+
+- Java Swing
+- JSP and Servlets
+- Kotlin and Android
+- .NET console, desktop, and web applications
+
+### Communication
+
+- SOAP
+- REST
+
+### Database
+
+- MySQL
+- SQL Server
+
+### Tools
+
+- Maven
+- Gradle
+- Visual Studio solutions
+- Python database setup utility
 
 ## Project Structure
 
-- `java-soap/` — database scripts, clients, mobile app, and SOAP services
-- `dotnet-rest/` — TicketPremium RESTful .NET server and clients
+```text
+ticket-premium-platform/
+├── java-soap/
+└── dotnet-rest/
+```
 
-## Features
+## Getting Started
 
-- User login
-- Match and locality browsing
-- Stadium seat selection
-- Ticket purchase and invoicing
-- Sales reporting
-- Credit simulation and banking-service integration
+Prepare the database with the included SQL or setup files. Define the environment variables listed in `.env.example`. Build Java modules from their `pom.xml` folders and open the Android app in Android Studio. Open .NET solutions in Visual Studio. Start the required backend services before their clients.
 
-## Configuration
+## Screenshots
 
-Database code reads `DB_HOST`, `DB_PORT`, `DB_URL`, `DB_USER`, and `DB_PASSWORD` as applicable. No cloud credentials are stored in this repository. Use `.env.example` as a variable-name reference only.
-
-## Running the Project
-
-Provision the databases with the included SQL or Python setup material after defining the required environment variables. Build Java modules from directories containing `pom.xml`; open the Android app with Android Studio. Open the .NET REST solution and clients through their `.sln` files in Visual Studio. Start backend services before their clients.
+Screenshots will be added soon.
 
 ## Academic Context
 
-This group academic project was produced for a Software Architecture course and explores a shared business system through SOAP, RESTful, web, desktop, console, and mobile clients.
-
+This group project was developed for a university software architecture course. It was used to practice SOAP, REST, databases, and applications for several platforms.
